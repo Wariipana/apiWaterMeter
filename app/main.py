@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
-from app.database.database import SessionLocal
+from app.database.database import SessionLocal, engine
 import app.database.models.medition
 import app.crud, app.schemas
+
 
 app.database.models.medition.Base.metadata.create_all(bind=engine)
 
