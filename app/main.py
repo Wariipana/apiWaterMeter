@@ -2,7 +2,9 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from app.database.database import SessionLocal, engine
 import app.database.models.medition
-import app.crud, app.schemas
+import app.crud
+
+from app.schemas import MedicionCreate
 
 
 app.database.models.medition.Base.metadata.create_all(bind=engine)
@@ -17,7 +19,7 @@ def get_db():
         db.close()
 
 @app.post("/api/mediciones")
-def recibir_medicion(data: app.schemas.MedicionCreate, db: Session = Depends(get_db)):
+def recibir_medicion(data: MedicionCreate, db: Session = Depends(get_db)):
     nueva = app.crud.crear_medicion(db, data)
     return {"status": "ok", "id": nueva.id}
 
