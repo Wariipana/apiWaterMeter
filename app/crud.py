@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-import schemas
+from . import schemas
 from database.models.medition import Medicion
 
 def crear_medicion(db: Session, data: schemas.MedicionCreate):
