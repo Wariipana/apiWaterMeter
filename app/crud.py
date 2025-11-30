@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from . import schemas
-from database.models import medition
+from app.database.models import medition
 
 def crear_medicion(db: Session, data: schemas.MedicionCreate):
     medicion = medition.Medicion(**data.dict())
